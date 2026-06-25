@@ -746,13 +746,12 @@ body{{
 .info-table th{{width:80px;color:var(--text-muted);font-weight:500;background:var(--card-bg);}}
 .info-table tr:last-child td,.info-table tr:last-child th{{border-bottom:none;}}
 
-.summary-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:22px;}}
-.summary-item{{background:var(--card-bg);border-radius:10px;border:1px solid var(--border);padding:16px 18px;display:flex;flex-direction:column;gap:4px;transition:transform .2s;}}
-.summary-item:hover{{transform:translateY(-2px);}}
+.summary-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;margin-bottom:22px;}}
+.summary-item{{background:var(--card-bg);display:flex;flex-direction:column;gap:6px;}}
 .si-icon{{font-size:22px;}}
 .si-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;}}
 .si-val{{font-size:18px;font-weight:700;color:var(--text);}}
-.summary-desc p{{font-size:14px;line-height:1.9;color:#334155;margin-bottom:12px;}}
+.summary-desc p{{font-size:14px;line-height:1.8;color:#475569;margin-bottom:12px;}}
 .summary-desc p:last-child{{margin-bottom:0;}}
 
 .cert-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}}
