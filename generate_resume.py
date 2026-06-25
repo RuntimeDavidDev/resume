@@ -954,44 +954,44 @@ def main():
     print("=" * 60)
 
     if not os.path.exists(PDF_PATH):
-        print(f"\n❌ PDF 不存在: {PDF_PATH}")
+        print(f"\n[X] PDF not found: {PDF_PATH}")
         sys.exit(1)
 
     # 1. 提取全文
-    print(f"\n📄 提取 PDF 全文...")
+    print(f"\n[*] Extracting PDF full text...")
     full_text = extract_full_text(PDF_PATH)
     print(f"   总字符数: {len(full_text)}")
 
     # 2. 按编号分节编排解析
-    print(f"\n🔍 按编号分节解析...")
+    print(f"\n[*] Parsing numbered sections...")
     sections = split_sections(full_text)
     print(f"   检测到 {len(sections)} 个分区: {list(sections.keys())}")
 
     personal, data = orchestrate_parsing(full_text)
 
-    print(f"   👤 {personal.get('name', '')} | 📱 {personal.get('phone', '')} | ✉️ {personal.get('email', '')}")
-    print(f"   教育背景: {len(data['education'])} 条")
+    print(f"   [Person] {personal.get('name', '')} | {personal.get('phone', '')} | {personal.get('email', '')}")
+    print(f"   Education: {len(data['education'])} entries")
     for e in data['education']:
-        print(f"      {e.get('school', '')} · {e.get('major', '')} · {e.get('degree', '')} ({e.get('period', '')})")
-    print(f"   技能: {len(data['skills'])} 节")
+        print(f"      {e.get('school', '')} | {e.get('major', '')} | {e.get('degree', '')} ({e.get('period', '')})")
+    print(f"   Skills: {len(data['skills'])} sections")
     for n, b in data['skills']:
         print(f"      {n}: {len(b)} 项")
-    print(f"   证书: {len(data['certifications'])} 项")
+    print(f"   Certifications: {len(data['certifications'])} items")
     for c in data['certifications']:
         print(f"      {c}")
-    print(f"   工作经历: {len(data['work_experience'])} 条")
+    print(f"   Work Experience: {len(data['work_experience'])} entries")
     for w in data['work_experience']:
         print(f"      {w['company']} ({w['period']}) [{len(w['duties'])} 职责]")
-    print(f"   项目经验: {len(data['projects'])} 条")
+    print(f"   Projects: {len(data['projects'])} entries")
     for p in data['projects']:
         print(f"      {p['name'][:40]} ({p['period']}) [{len(p['duties'])} 职责, {len(p['achievements'])} 业绩]")
 
     # 3. 生成 HTML
-    print(f"\n🎨 生成 HTML...")
+    print(f"\n[*] Generating HTML...")
     html = build_html(personal, data)
     with open(OUTPUT_HTML_PATH, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"✅ {OUTPUT_HTML_PATH} ({os.path.getsize(OUTPUT_HTML_PATH) / 1024:.1f} KB)")
+    print(f"[OK] {OUTPUT_HTML_PATH} ({os.path.getsize(OUTPUT_HTML_PATH) / 1024:.1f} KB)")
 
 
 if __name__ == "__main__":
