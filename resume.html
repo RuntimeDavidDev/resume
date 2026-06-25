@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邓伟 · 个人简历</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f4f8;--card-bg:#ffffff;
+  --header-grad:linear-gradient(135deg,#0f172a,#1e3a5f 50%,#0d2137);
+  --primary:#38bdf8;--primary-dark:#0284c7;--accent:#6366f1;
+  --text:#1e293b;--text-muted:#64748b;--border:#e2e8f0;
+  --green:#10b981;--amber:#f59e0b;
+  --radius:14px;--shadow:0 2px 8px rgba(0,0,0,.06);--shadow-md:0 6px 24px rgba(0,0,0,.09);
+}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;-webkit-font-smoothing:antialiased;
+}
+.hero{
+  background:var(--header-grad);padding:44px 24px 32px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;top:-60px;right:-60px;
+  width:350px;height:350px;border-radius:50%;
+  background:radial-gradient(circle,rgba(56,189,248,.10),transparent 70%);pointer-events:none;
+}
+.hero::after{
+  content:'';position:absolute;bottom:-90px;left:8%;
+  width:450px;height:220px;border-radius:50%;
+  background:radial-gradient(circle,rgba(99,102,241,.06),transparent 70%);pointer-events:none;
+}
+.hero-inner{max-width:880px;margin:0 auto;display:flex;align-items:center;gap:26px;position:relative;z-index:1;}
+.avatar{
+  width:84px;height:84px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--accent));
+  display:flex;align-items:center;justify-content:center;
+  font-size:34px;flex-shrink:0;
+  box-shadow:0 0 0 4px rgba(56,189,248,.2),0 8px 28px rgba(56,189,248,.12);
+}
+.hero-info h1{font-size:28px;font-weight:700;color:#f8fafc;letter-spacing:.02em;}
+.hero-info h1 span{font-weight:400;font-size:15px;color:#94a3b8;margin-left:8px;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px;}
+.hero-tag{padding:3px 14px;border-radius:20px;font-size:12px;font-weight:500;background:rgba(56,189,248,.10);border:1px solid rgba(56,189,248,.2);color:var(--primary);}
+.hero-contacts{display:flex;flex-wrap:wrap;gap:18px;margin-top:12px;font-size:13px;color:#94a3b8;}
+.hero-contacts a,.hc-item{display:flex;align-items:center;gap:6px;color:#94a3b8;text-decoration:none;transition:color .2s;}
+.hero-contacts a:hover{color:var(--primary);}
+
+.toolbar{
+  background:rgba(15,23,42,.96);padding:10px 24px;display:flex;justify-content:flex-end;gap:10px;
+  border-bottom:1px solid rgba(56,189,248,.08);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px);
+}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 20px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;border:none;transition:all .2s;white-space:nowrap;}
+.btn-outline{background:transparent;border:1px solid rgba(148,163,184,.2);color:#94a3b8;}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary);background:rgba(56,189,248,.05);}
+.btn-primary{background:linear-gradient(135deg,var(--primary),#0ea5e9);color:#0f172a;font-weight:600;box-shadow:0 2px 8px rgba(56,189,248,.2);}
+.btn-primary:hover{background:linear-gradient(135deg,#7dd3fc,var(--primary));transform:translateY(-1px);box-shadow:0 4px 14px rgba(56,189,248,.3);}
+
+.tab-bar{background:#fff;border-bottom:2px solid var(--border);padding:0 16px;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-btn{padding:15px 22px;border:none;background:transparent;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:6px;}
+.tab-btn:hover{color:var(--text);}
+.tab-btn.active{color:var(--primary-dark);border-bottom-color:var(--primary-dark);font-weight:600;}
+
+.content-area{max-width:880px;margin:0 auto;padding:28px 20px 80px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;animation:fadeIn .3s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+
+.card{background:var(--card-bg);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:24px;border:1px solid var(--border);overflow:hidden;transition:box-shadow .2s;}
+.card:hover{box-shadow:var(--shadow-md);}
+.card-header{padding:18px 24px 14px;border-bottom:1px solid var(--border);}
+.card-header h3{font-size:16px;font-weight:700;color:var(--text);}
+.card-body{padding:18px 24px 22px;}
+
+.timeline-card{position:relative;padding:4px 0 28px 36px;border-left:2px solid var(--border);margin-left:12px;}
+.timeline-card:last-child{padding-bottom:4px;}
+.timeline-dot{position:absolute;left:-7px;top:8px;width:12px;height:12px;border-radius:50%;background:var(--primary-dark);border:2px solid var(--card-bg);box-shadow:0 0 0 3px rgba(2,132,199,.12);}
+.work-dot{background:var(--accent);box-shadow:0 0 0 3px rgba(99,102,241,.12);}
+.timeline-content{}
+.tl-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px;}
+.tl-header h3{font-size:16px;font-weight:700;color:var(--text);}
+.tl-badge{flex-shrink:0;font-size:12px;font-weight:500;padding:3px 12px;border-radius:20px;background:#eff6ff;color:var(--primary-dark);border:1px solid #bfdbfe;white-space:nowrap;}
+.work-badge{background:#eef2ff;color:var(--accent);border-color:#c7d2fe;}
+.project-badge{background:#ecfdf5;color:var(--green);border-color:#a7f3d0;}
+.tl-position{font-size:13px;color:var(--text-muted);margin-bottom:10px;font-weight:500;}
+
+.project-dot{background:var(--green);box-shadow:0 0 0 3px rgba(16,185,129,.12);}
+.card-body>.timeline-card:first-child{padding-top:0;}
+.card-body>.timeline-card:first-child .timeline-dot{top:2px;}
+.card-body>.timeline-card:last-child{padding-bottom:0;border-left-color:transparent;}
+
+.skill-card{}
+.skill-header{display:flex;align-items:center;gap:10px;background:var(--card-bg);}
+.skill-dot{width:8px;height:8px;border-radius:50%;background:var(--primary-dark);}
+
+.bullet-list{list-style:none;margin:0;padding:0;}
+.bullet-list li{padding:7px 0 7px 22px;font-size:14px;color:#334155;line-height:1.7;position:relative;border-bottom:1px solid var(--border);}
+.bullet-list li:last-child{border-bottom:none;}
+.bullet-list li::before{content:'';position:absolute;left:0;top:14px;width:6px;height:6px;border-radius:50%;background:var(--primary-dark);}
+.achievement-list li::before{background:var(--green);}
+.achievement{color:#065f46!important;}
+
+.desc-text{font-size:14px;color:#475569;line-height:1.8;background:var(--card-bg);border-left:3px solid var(--primary);padding:14px 18px;border-radius:0 10px 10px 0;margin-bottom:16px;}
+.section-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);margin:18px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border);}
+.achievement-label{color:var(--green);}
+
+.info-table{width:100%;border-collapse:collapse;}
+.info-table th,.info-table td{padding:8px 14px;font-size:14px;text-align:left;border-bottom:1px solid var(--border);}
+.info-table th{width:80px;color:var(--text-muted);font-weight:500;background:var(--card-bg);}
+.info-table tr:last-child td,.info-table tr:last-child th{border-bottom:none;}
+
+.summary-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px;margin-bottom:22px;}
+.summary-item{background:var(--card-bg);border-radius:10px;border:1px solid var(--border);padding:16px 18px;display:flex;flex-direction:column;gap:4px;transition:transform .2s;}
+.summary-item:hover{transform:translateY(-2px);}
+.si-icon{font-size:22px;}
+.si-label{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;}
+.si-val{font-size:18px;font-weight:700;color:var(--text);}
+.summary-desc p{font-size:14px;line-height:1.9;color:#334155;margin-bottom:12px;}
+.summary-desc p:last-child{margin-bottom:0;}
+
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
+.cert-badge{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:16px 20px;font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;transition:.2s;}
+.cert-badge:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.empty-text{color:var(--text-muted);font-size:14px;padding:8px 0;}
+
+@media(max-width:640px){
+  .hero-inner{flex-direction:column;align-items:flex-start;}
+  .tab-btn{padding:12px 14px;font-size:13px;}
+  .tl-header{flex-direction:column;}
+  .summary-grid{grid-template-columns:repeat(2,1fr);}
+  .cert-grid{grid-template-columns:1fr;}
+}
+@media print{
+  body{background:#fff!important;min-height:auto!important;}
+  .hero{background:#0f172a!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;padding:12px 24px!important;}
+  .hero::before,.hero::after{display:none!important;}
+  .toolbar,.tab-bar{display:none!important;}
+  .tab-panel{display:block!important;}
+  .content-area{max-width:100%!important;padding:8px 12px 20px!important;}
+  .card,.timeline-card{box-shadow:none!important;page-break-inside:avoid;}
+  .tab-panel+.tab-panel{margin-top:12px;}
+  @page{margin:1cm;}
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="avatar">👨‍💻</div>
+    <div class="hero-info">
+      <h1>邓伟<span>个人简历</span></h1>
+      <div class="hero-tags">
+        <span class="hero-tag">🎯 运维开发/项目管理</span>
+        <span class="hero-tag">⏱️ 18 年 经验</span>
+      </div>
+      <div class="hero-contacts">
+        <a href="tel:15012641201">📱 15012641201</a>
+        <a href="mailto:daviddeng465@126.com">✉️ daviddeng465@126.com</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toolbar" id="toolbar">
+  <button class="btn btn-outline" onclick="window.print()">🖨️ 打印</button>
+  <button class="btn btn-primary" id="downloadBtn">📥 下载 PDF</button>
+</div>
+
+<div class="tab-bar" role="tablist">
+  <button class="tab-btn active" data-tab="summary" onclick="switchTab('summary')">👤 职业概述</button>
+  <button class="tab-btn" data-tab="education" onclick="switchTab('education')">🎓 教育背景</button>
+  <button class="tab-btn" data-tab="skills" onclick="switchTab('skills')">🛠️ 技术技能</button>
+  <button class="tab-btn" data-tab="work" onclick="switchTab('work')">💼 工作经历</button>
+  <button class="tab-btn" data-tab="projects" onclick="switchTab('projects')">🚀 项目经验</button>
+  <button class="tab-btn" data-tab="certifications" onclick="switchTab('certifications')">🏅 证书资质</button>
+</div>
+
+<div class="content-area">
+  <div class="tab-panel active" id="tab-summary"><div class="card">
+  <div class="card-header"><h3>👤 职业概述</h3></div>
+  <div class="card-body">
+    <div class="summary-grid">
+      <div class="summary-item"><span class="si-icon">⏱️</span><span class="si-label">工作经验</span><span class="si-val">18 年</span></div>
+      <div class="summary-item"><span class="si-icon">🎯</span><span class="si-label">求职意向</span><span class="si-val">运维开发/项目管理</span></div>
+      <div class="summary-item"><span class="si-icon">🎓</span><span class="si-label">最高学历</span><span class="si-val">本科</span></div>
+      <div class="summary-item"><span class="si-icon">🌐</span><span class="si-label">英语能力</span><span class="si-val">CET-6</span></div>
+    </div>
+    <div class="summary-desc">
+      <p>资深 IT 运维与 DevOps 工程师，拥有 <strong>18 年</strong> 行业经验，深耕 ITSM/ITOM 解决方案（IBM Maximo、ServiceNow），精通跨平台系统管理与自动化运维。</p>
+      <p>具备丰富的 M365、Azure、AWS 云平台实战经验，擅长 Kubernetes 容器编排与 CI/CD 工具链集成，曾主导多个跨国企业级项目交付。</p>
+    </div>
+  </div></div></div>
+  <div class="tab-panel" id="tab-education">    <div class="card">
+      <div class="card-header"><h3>🎓 教育背景</h3></div>
+      <div class="card-body">
+    <div class="timeline-card">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🎓 湖南理工大学</h3><span class="tl-badge">2002.09 — 2006.06</span></div>
+        <table class="info-table"><tr><th>专 业</th><td>计算机科学与技术</td></tr><tr><th>学 历</th><td>本科</td></tr></table>
+      </div></div>
+      </div></div></div>
+  <div class="tab-panel" id="tab-skills">    <div class="card skill-card">
+      <div class="card-header skill-header"><span class="skill-dot"></span><h3>Technical Skills</h3></div>
+      <div class="card-body"><ul class="bullet-list"><li>精通 AIX/RedHat/Windows 系统管理，包括系统安装、配置、优化、安全管理、备份与恢复，以及自动化操作（Ansible）和 Shell/Python 脚本开发。</li><li>精通 IBMMaximoITSM/资产管理 的运维与开发。</li><li>精通 ServiceNowITSM 工具的运维与开发。</li><li>熟悉将工具链（包括 GitHub、Jira、Jenkins、Ansible、Kubernetes 等）集成到 ServiceNowDevOps 平台，实现规划、编码、部署和监控全流程的自动化与协作。</li><li>熟悉数据库服务（AWSRDS/AzureDB/MySQL/DB2），具备 SQL 开发经验。</li><li>熟悉 Microsoft365(M365) 管理，包括 Exchange、SharePoint 配置管理，许可证优化，以及零信任安全架构配置（例如，条件访问、数据丢失防护），确保企业合规性及资源效率。</li><li>熟悉 Kubernetes 容器编排和 Docker 容器操作。</li><li>熟悉 Azure/AWS 平台基础设施运维（IaaS/PaaS），包括网络架构设计、资源成本优化及安全合规解决方案。</li><li>熟悉 Prometheus、Grafana 监控系统，具备日志分析、性能监控及告警经验。</li></ul></div></div>
+    <div class="card skill-card">
+      <div class="card-header skill-header"><span class="skill-dot"></span><h3>IT 运维管理 (ITSM/ITOM)</h3></div>
+      <div class="card-body"><ul class="bullet-list"><li>担任公司 IT 运维管理（SME），推动 IT 运维流程（例如，事件管理、问题管理、变更管理、发布管理）的标准化工作，并参与基于 Maximo/ServiceNow 的 IT 服务管理（ITSM）+IT 运维管理（ITOM）解决方案实施。</li><li>负责团队建设与流程体系化，编写运维手册和技术规范，以提升团队协作效率。</li><li>与开发、测试和安全团队协调，以简化 CI/CD 流程并缩短交付周期。</li></ul></div></div>
+    <div class="card skill-card">
+      <div class="card-header skill-header"><span class="skill-dot"></span><h3>软技能</h3></div>
+      <div class="card-body"><ul class="bullet-list"><li>擅长跨部门沟通；主导协调运维部门与业务部门的需求对齐，推动技术解决方案的实施。</li><li>具备技术培训和项目团队建设的经验，指导运维工程师成功通过客户项目的技能评估。</li></ul></div></div></div>
+  <div class="tab-panel" id="tab-work">    <div class="card">
+      <div class="card-header"><h3>💼 工作经历</h3></div>
+      <div class="card-body">
+    <div class="timeline-card">
+      <div class="timeline-dot work-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🏢 香港快运航空上海办事处</h3><span class="tl-badge work-badge">2026.01 — 2026.04</span></div>
+        <div class="tl-position">IT 营运支援助理经理</div>
+        <ul class='bullet-list'><li>负责航空核心 IT 基础设施与应用系统的主动监控，利用监控工具实时追踪服务器、数据 库、网络及批处理作业状态，建立快速响应机制，有效降低业务中断风险。</li><li>深入支援 PSS 旅客服务系统与 DCS 离港控制系统，快速定位并解决技术瓶颈，为旅客出 行及航班准点率提供坚实的底层 IT 保障，确保值机、航班控制等前端高敏业务场景的连续 性。</li><li>依托 ServiceNow 平台实现 PSS/DCS 事件的标准化流转。主导故障根因分析（RCA）并 沉淀至已知错误数据库（KEDB），针对频发问题推动系统性优化，从根源上减少重复故障 率。</li><li>负责日/夜班运维团队的协调与管理，制定并优化无缝交接班机制，保障 7x24 小时全天候 IT 运营支撑的稳定性与一致性。</li></ul>
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot work-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🏢 勤达睿信息科技(深圳)有限公司</h3><span class="tl-badge work-badge">2021.09 — 2024.07</span></div>
+        <div class="tl-position">ITleader</div>
+        <ul class='bullet-list'><li>参与 ITSM 平台的SDLC 与 DevOps 生态体系建设与架构优化，将 GitHub、Jira、Kubernetes 等主流研发工具链深度集成至 ServiceNowDevOps 平台。</li><li>构建完整的软件开发生命周期（SDLC）生态系统，打破工具间数据孤岛，实现从需求规划、 代码编写、CI/CD 部署到线上监控的全流程自动化与可视化协作，大幅提升研发效能与交付 质量。</li><li>AIA 友邦保险项目主导终端管理架构从传统 SCCM 向现代管理 (Intune) 的转型，负责并 完成技术架构的 POC 设计与可行性验证。</li><li>香港利丰项目负责 M365 环境下终端安全基线与合规策略的设计与落地实施，保障跨国企 业数据安全与审计达标。</li><li>华晨宝马项目参与企业级 M365 管理配置，负责定制化功能开发与第三方系统的集成对接。</li><li>马自达项目终端运维自动化开发与 POC 验证，负责马自达终端软件分发方案的 POC 验证， 确保新架构下的分发效率与稳定性。 针对端点安全与访问控制，主导开发 Tanium 终端安全平台与企业身份访问管理系统（IAM） 的注册自动化集成，实现终端入网与权限分配的零信任自动化流转。</li></ul>
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot work-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🏢 IBM</h3><span class="tl-badge work-badge">2008.05 — 2021.08</span></div>
+        <div class="tl-position">LeaderSystemAdminstrator</div>
+        <ul class='bullet-list'><li>大型主机运维与架构支持，负责 IBM 大型主机环境的日常运维、资源调度与性能监控。 处理 z/OS 系统级问题，保障核心业务系统的高可用性与连续性；参与主机系统的日常健康 检查、故障诊断及灾备演练。</li><li>SRMLinux 系统全生命周期管理， 作为 Linux 系统运维负责人，全面管理 SRM 服务器集 群。负责操作系统的安装配置、内核升级、补丁管理及安全漏洞修复；主导跨平台/跨版本 的系统迁移与割接；制定并执行自动化备份与恢复策略，保障数据安全。</li><li>ITSM 流程系统开发与运维：基于 MaximoITSM 平台，负责 IT 服务管理流程的需求分析、 系统配置与二次开发。持续优化事件管理、变更管理等运维流程，提升团队服务交付效率与 合规性。</li><li>ServiceNow 平台运维与定制开发： 负责 ServiceNow 平台的日常运维与功能迭代。通过 脚本定制开发工作流、自动化任务及集成接口，推动 IT 服务流程的标准化与自动化，降低 人工干预成本。</li></ul>
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot work-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🏢 文思创新</h3><span class="tl-badge work-badge">2007.05 — 2008.05</span></div>
+        <div class="tl-position">cobol 开发</div>
+        <ul class='bullet-list'><li>外派 IBM 参与星展银行（DBSBank）核心系统主机迁移项目，承担 COBOL 程序开发与数 据迁移支持工作。 深入理解银行核心业务（如存贷款、账务、客户信息等）的数据结构，梳理老系统数据表</li><li>与新系统数据模型的对应关系，输出数据映射文档。 开发数据校验与核对程序，对迁移前后的数据进行多维度比对（如总账平衡、明细账核对），</li><li>保障核心账务数据“零差错”迁移。 配合项目组的测试计划，搭建测试环境，执行迁移演练，分析运行日志并定位数据异常原</li><li>因，保障各阶段迁移演练按时达标。</li></ul>
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot work-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🏢 正佳物流有限公司</h3><span class="tl-badge work-badge">2006.09 — 2007.05</span></div>
+        <div class="tl-position">C# 开发</div>
+        <ul class='bullet-list'><li>使用 C# 完成仓储管理模块（WMS）中收货、上架、拣货、发货等业务流的代码编写与 界面开发。 负责保税业务中“三账平衡”（海关账、仓库账、财务账）的数据逻辑校验开发，编写高</li><li>效SQL语句处理大批量库存数据。</li><li>利用水晶报表（CrystalReports）或自定义控件，开发各类海关核销报表、库存台账及业 务统计报表。 参与系统测试与日常维护，快速定位并解决运行出现的程序缺陷，保障仓储业务的稳定。</li></ul>
+      </div></div>
+      </div></div></div>
+  <div class="tab-panel" id="tab-projects">    <div class="card">
+      <div class="card-header"><h3>🚀 项目经验</h3></div>
+      <div class="card-body">
+    <div class="timeline-card">
+      <div class="timeline-dot project-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🚀 Maximo ITSM 的实施与服务管理</h3><span class="tl-badge project-badge">2010/08-2021/05</span></div>
+        <div class="desc-text">作为技术提供商，我们通过 Maximo 为客户实施交付 IT 服务平台。项目涉及建立服务 请求 管理门户，以高效处理内部和外部用户提交的设施及 IT 服务请求。对 ITSM 模块进行 了深度配置，设计了分级响应机制，并实现了关键事件的自动化路由。重构了变更审批 流程，引入了自动化风险评估，并定义及配置了服务级别协议（SLAs）。构建了服务台 知识库，用以整合解决方案，赋能服务台工程师，并支持用户自助服务，显著降低了一 线技术支持的工作量。</div>
+        <div class="section-label">📋 项目职责</div><ul class="bullet-list"><li>使用 Java/Jython 扩展 Maximo 工作流引擎，开发自动化工单分配规则。</li><li>基于 Maximo 资产模型设计 IT 设备台账系统，集成 CMDB，实现资产状态实时追踪。</li><li>开发 自定义报表（BIRT 工具），支持 SLA 达成率、故障响应时长等 KPI 可视化分析。</li><li>通过 Web Services 和 REST API 对接监控系统（如 ITM），提升故障响应效率。</li><li>优化数据库（DB2）性能，通过索引调整和 SQL 调优，缩短关键报表生成时间主导 Maximo版本升级（7.x → 7.6），修复兼容性问题并迁移历史数据（约 200 万条记录）。</li><li>建立知识库（KnowledgeBase），标准化常见故障处理 SOP，提升运维团队问题解决率。</li></ul>
+        
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot project-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🚀 ServiceNow DevOps 与 CI/CD 项目迁移优化</h3><span class="tl-badge project-badge">2019/03-2021/05</span></div>
+        <div class="desc-text">参与 ServiceNow 与企业 DevOps 工具链的端到端集成，通过自动化简化了 ITSM 流程。</div>
+        <div class="section-label">📋 项目职责</div><ul class="bullet-list"><li>参与设计 ServiceNowRESTAPI 与 Jenkins、Jira 和 GitHub 集成，实现了变更工的流程驱动。</li><li>参与通过开发自定义 REST API 调用、事件脚本及中间件（如 IntegrationHub），自动化触发变更请求（ChangeRequest）、事件单（Incident）及配置项（CI）更新，消除人工操作瓶颈。</li><li>参与设计并落地 CI/CD 与 ITSM 联动流程：例如代码提交自动生成变更工单、构建失败自动创建事件告警、部署成功同步更新 CMDB 配置项。</li><li>集成了 Prometheus+Grafana 监控平台以监控性能指标（API 响应时间、事务吞吐量），使用告警自愈脚本自动触发缓存清理或节点扩展，事务处理效率提高了 35%。参与建立双向数据同步机制，确保 ServiceNow CMDB 中的服务映射与工具链中的资产版本、环境配置保持一致，提升配置管理准确率</li><li>利用 ServiceNow Flow Designer 或 Workflow Editor 编排自动化策略，结合DevOps webhook触发器，实现端到端的可观测与审计追踪，满足合规要求</li><li>通过自动化脚本与仪表盘监控集成链路的运行效率，识别手工干预点并逐步优化，最终使 ITSM 流程自动化率提升 40%以上，变更失败率降低 30%</li></ul>
+        <div class="section-label achievement-label">🏆 项目业绩</div><ul class="bullet-list achievement-list"><li class='achievement'>平稳支持客户 IBM Maximo 和 ServiceNOW 运维开发 。</li><li class='achievement'>深度为客户定制和维护 IT 服务管理的流程，如事件管理、问题管理、变更管理等。</li><li class='achievement'>业务期间通过了 ServiceNOW 管理员认证。</li><li class='achievement'>业务期间完成了 ServiceNOW ITSM 开发的培训。</li></ul>
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot project-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🚀 利丰有限公司 M365 终端安全性和合规性实施(SCCM/Intune)</h3><span class="tl-badge project-badge">2021/05-2022/10</span></div>
+        <div class="desc-text">带领团队对负责利丰有限公司在亚太地区，欧洲，美洲，非洲的电脑和移动设备的管理。 涉及全球接近 3 万台电脑和移动终端进行系统的安装，补丁升级，软件分发、系统安 全配置等，以确保设备的符合企业安全和合规性，达成健康、高效和安全的客户工作环 境。</div>
+        <div class="section-label">📋 项目职责</div><ul class="bullet-list"><li>应用分发实施，推送企业应用（如 Microsoft 365 应用、内部业务应用）到设备。批量部署 Win32 应用、补丁（如 Windows Update、第三方软件更新）</li><li>安全与合规：条件访问策略确保合规设备无感访问 Teams、SharePoint 等 M365 服务，限制不符合安全策略的设备访问企业资源；合规策略定义设备健康标准（如防病毒状态、操作系统版本），标记不合规设备并触发修复动作。</li><li>设备管理：移动设备管理 (MDM)支持 iOS、Android、Windows、macOS 设备的注册、配置与策略部署。移动应用管理 (MAM)管理企业应用（如隔离公司数据，防止公司数据复制到个人应用）。Autopilot 自动化部署预配置新设备，实现“开箱即用”的零接触部署（适用于Windows 设备）。</li></ul>
+        <div class="section-label achievement-label">🏆 项目业绩</div><ul class="bullet-list achievement-list"><li class='achievement'>设备合规率提升至 99.5%（Intune 自动修复策略）</li><li class='achievement'>越狱/root 设备检测准确率达 98%（硬件级可信平台模块验证）</li><li class='achievement'>高危端口使用率下降 92%（防火墙策略自动化部署）</li><li class='achievement'>文件误共享率降低 76%（实时策略提示机制）</li><li class='achievement'>加密存储设备识别率 100%（BitLocker 强制策略）</li></ul>
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot project-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🚀 马自达身份访问控制系统和终端管理系统用户登录自动化集成</h3><span class="tl-badge project-badge">2023/03-2024/04</span></div>
+        <div class="desc-text">日本马自达希望将身份访问控制系统和终端管理系统 tanium 集成，以达到增强企业的 安全性和效率。身份访问控制系统先前由系统注册担当者以 CSV 批量导入，并需要处 理批量导入数据可能发生的失败信息收集分析。项目解决了终端 PC 和移动终端自动注 册后，随后自动在身份访问控制系统实现自动注册。</div>
+        <div class="section-label">📋 项目职责</div><ul class="bullet-list"><li>作为项目开发的 leader，带领团队跨团队合作编写完成终端管理系统 tanium 的 API和身份管理系统自动注册的集成。</li></ul>
+        <div class="section-label achievement-label">🏆 项目业绩</div><ul class="bullet-list achievement-list"><li class='achievement'>实现了身份访问控制系统和终端管理系统 tanium 集成，增强企业的安全性和效率。无需访担当者通过 CSV 批量导入注册，实现了自动注册的终端会定期在身份访问控制系统注册。启动定期巡查注册程序，收集失败注册信息，程序分析出错信息将解决方法发送给注册担当者。作为项目开发 leader,在客户项目交付周期紧张，带领团队把握好项目计划和风险，确保项目按时、按预算、按质量完成。得到客户高度认可，获得公司 2023 年度最佳团队奖。</li></ul>
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot project-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🚀 华晨宝马 M365 管理配置和开发集成</h3><span class="tl-badge project-badge">2022/10-2023/3</span></div>
+        <div class="desc-text">华晨宝马在沈阳拥有包括大东工厂、铁西工厂、里达工厂等多家工厂，企业需要直接管 理26,000 名员工的许可分配。面临手动分配导致操作耗时，许可证浪费，过度权限分 配，离职员工权限残留，许可证类型误配等挑战。此外客户要求基于 PowerPlatform 支 持应用开发、数据分析和自动化业务。</div>
+        <div class="section-label">📋 项目职责</div><ul class="bullet-list"><li>基于 Microsoft Graph API 使用组基础许可和动态组，实现自动化许可证管理实施基于角色的访问控制（RBAC），细化权限分配集成身份治理工具，如 Azure ADIdentity Governance，自动化用户生命周期持续监控和优化许可证使用情况，生成报告进行分析</li></ul>
+        
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot project-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🚀 SRM Linux 操作系统技术支持</h3><span class="tl-badge project-badge">2017/11-2019/03</span></div>
+        <div class="desc-text">SRM 的服务器运维，负责系统补丁安装，系统升级，系统迁移，系统备份管理，程序安 装</div>
+        <div class="section-label">📋 项目职责</div><ul class="bullet-list"><li>负责系统程序的安装、配置、更新和日常管理，确保操作系统处于最佳运行状态。</li><li>实时监控 系统性能，确保 CPU、内存、磁盘使用率等指标符合标准。</li><li>管理 DB2 数据库实例，确保高效的数据存储与查询性能。</li><li>执行备份与恢复操作，确保数据的高可用性和安全性。</li><li>优化 SQL 查询性能，监控数据库负载。</li></ul>
+        
+      </div></div>
+    <div class="timeline-card">
+      <div class="timeline-dot project-dot"></div>
+      <div class="timeline-content">
+        <div class="tl-header"><h3>🚀 IBM Mainframes 系统技术支持 · IBM Mainframe IT specialist</h3><span class="tl-badge project-badge">2008/05-2010/08</span></div>
+        <div class="desc-text">项目描述：2008 到 2010 IBM Mainframe 运维开发</div>
+        <div class="section-label">📋 项目职责</div><ul class="bullet-list"><li>使用 SMF、SYSLOG、DUMP 等日志工具，记录系统事件，进行故障排查。对系统出现的异常或崩溃进行诊断，排查硬件、操作系统或应用程序的问题。</li></ul>
+        
+      </div></div>
+      </div></div></div>
+  <div class="tab-panel" id="tab-certifications">
+    <div class="card">
+      <div class="card-header"><h3>🏅 证书与资质</h3></div>
+      <div class="card-body"><div class="cert-grid"><div class="cert-badge">🏅 IBMDB2 系统管理员证书</div>
+<div class="cert-badge">🏅 ServiceNOW 管理员证书</div>
+<div class="cert-badge">🏅 Azure 系统管理员证书</div>
+<div class="cert-badge">🏅 英语六级证书</div></div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+function switchTab(n){
+  document.querySelectorAll('.tab-btn').forEach(function(b){
+    var a=b.dataset.tab===n;b.classList.toggle('active',a);b.setAttribute('aria-selected',String(a));
+  });
+  document.querySelectorAll('.tab-panel').forEach(function(p){
+    p.classList.toggle('active',p.id==='tab-'+n);
+  });
+  if(history.pushState)history.pushState(null,null,'#'+n);
+}
+(function(){
+  var h=location.hash.replace('#','');
+  if(h&&document.querySelector('.tab-btn[data-tab="'+h+'"]'))switchTab(h);
+})();
+document.addEventListener('keydown',function(e){
+  if(/^(INPUT|TEXTAREA)$/.test(e.target.tagName))return;
+  var t=Array.from(document.querySelectorAll('.tab-btn'));
+  var i=t.findIndex(function(b){return b.classList.contains('active');});
+  if(e.key==='ArrowRight'){var n=t[(i+1)%t.length];switchTab(n.dataset.tab);n.focus();e.preventDefault();}
+  if(e.key==='ArrowLeft'){var n=t[(i-1+t.length)%t.length];switchTab(n.dataset.tab);n.focus();e.preventDefault();}
+});
+(function(){
+  var btn=document.getElementById('downloadBtn');if(!btn)return;
+  function fb(){
+    var ct=null;document.querySelectorAll('.tab-btn.active').forEach(function(b){ct=b.dataset.tab;});
+    var p=document.querySelectorAll('.tab-panel'),tb=document.getElementById('toolbar'),tn=document.querySelector('.tab-bar');
+    p.forEach(function(x){x.style.display='block';});
+    if(tb)tb.style.display='none';if(tn)tn.style.display='none';
+    window.print();
+    setTimeout(function(){p.forEach(function(x){x.style.display='';});if(tb)tb.style.display='';if(tn)tn.style.display='';if(ct)switchTab(ct);},1200);
+  }
+  var s=document.createElement('script');
+  s.src='https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+  s.onload=function(){
+    btn.onclick=function(){
+      var p=document.querySelectorAll('.tab-panel'),tb=document.getElementById('toolbar'),tn=document.querySelector('.tab-bar');
+      var hero=document.querySelector('.hero'),ca=document.querySelector('.content-area');
+      // 保存原始样式
+      var hp=hero?hero.style.padding:'',ho=hero?hero.style.overflow:'';
+      var cp=ca?ca.style.padding:'',cm=ca?ca.style.maxWidth:'';
+      // 紧凑布局
+      if(hero){hero.style.padding='11px 24px';hero.style.overflow='hidden';}
+      if(ca){ca.style.padding='6px 12px 16px';ca.style.maxWidth='100%';}
+      p.forEach(function(x){x.style.display='block';});
+      if(tb)tb.style.display='none';if(tn)tn.style.display='none';
+      html2pdf().set({margin:[8,8,8,8],filename:'邓伟_简历.pdf',image:{type:'jpeg',quality:.99},html2canvas:{scale:2,useCORS:true,logging:false},jsPDF:{unit:'mm',format:'a4',orientation:'portrait'},pagebreak:{mode:['avoid-all','css','legacy']}}).from(document.body).save().then(function(){
+        p.forEach(function(x){x.style.display='';});
+        if(tb)tb.style.display='';if(tn)tn.style.display='';
+        if(hero){hero.style.padding=hp;hero.style.overflow=ho;}
+        if(ca){ca.style.padding=cp;ca.style.maxWidth=cm;}
+      });
+    };
+  };
+  s.onerror=function(){btn.onclick=fb;};
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>

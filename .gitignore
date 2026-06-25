@@ -1,0 +1,10 @@
+*.py
+*.bat
+*.md
+*.pdf
+__pycache__/
+*.pyc
+.venv/
+venv/
+resume_deploy/
+write_bat.py
