@@ -747,7 +747,7 @@ body{{
 .info-table tr:last-child td,.info-table tr:last-child th{{border-bottom:none;}}
 
 .summary-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px;margin-bottom:22px;}}
-.summary-item{{background:var(--card-bg);display:flex;flex-direction:column;gap:6px;}}
+.summary-item{{display:flex;flex-direction:column;gap:6px;}}
 .si-icon{{font-size:22px;}}
 .si-label{{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;}}
 .si-val{{font-size:18px;font-weight:700;color:var(--text);}}
