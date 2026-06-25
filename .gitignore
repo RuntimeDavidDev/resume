@@ -9,3 +9,4 @@ venv/
 resume_deploy/
 write_bat.py
 !index.html
+!使用手册.md
